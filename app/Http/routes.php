@@ -16,6 +16,13 @@ Route::get('/', 'WelcomeController@index');
 Route::get('home', 'HomeController@index');
 
 Route::controllers([
-	'auth' => 'Auth\AuthController',
-	'password' => 'Auth\PasswordController',
+    'auth'     => 'Auth\AuthController',
+    'password' => 'Auth\PasswordController',
 ]);
+
+
+Route::resource('transaksi', 'TransaksiController');
+
+Route::get('get-token', function () {
+    echo csrf_token();
+});
