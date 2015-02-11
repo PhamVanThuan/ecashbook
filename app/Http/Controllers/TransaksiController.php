@@ -3,6 +3,7 @@
 use EcashBook\Http\Requests;
 use EcashBook\Http\Requests\TransaksiRequest;
 use EcashBook\Repositories\TransaksiRepository;
+use EcashBook\Transaksi;
 
 class TransaksiController extends Controller
 {
@@ -12,9 +13,9 @@ class TransaksiController extends Controller
      *
      * @return Response
      */
-    public function index()
+    public function index(TransaksiRepository $repository)
     {
-        return 'index';
+        return $repository->find($term = null);
     }
 
     /**
@@ -24,7 +25,7 @@ class TransaksiController extends Controller
      */
     public function create()
     {
-        return 'index';
+        return Transaksi::all();
     }
 
     public function store(TransaksiRequest $request, TransaksiRepository $transaksi)
@@ -32,16 +33,9 @@ class TransaksiController extends Controller
         return $transaksi->create($request->all());
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int $id
-     *
-     * @return Response
-     */
-    public function show($id)
+    public function show(TransaksiRepository $transaksi, $id)
     {
-        //
+        return $transaksi->findById($id);
     }
 
     /**
@@ -56,16 +50,13 @@ class TransaksiController extends Controller
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  int $id
-     *
-     * @return Response
-     */
-    public function update($id)
+    public function update(Requests\TransaksiEditRequest $request, $id)
     {
-        //
+        $transaksi = Transaksi::find($id);
+        $transaksi->uraian = $request->get('uraian');
+        $transaksi->jumlah = $request->get('jumlah');
+        $transaksi->status = $request->get('status');
+        $transaksi->save();
     }
 
     /**

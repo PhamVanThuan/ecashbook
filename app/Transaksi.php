@@ -7,4 +7,5 @@ class Transaksi extends Model
 
     public $table = 'transaksi';
 
+
 }

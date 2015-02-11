@@ -7,7 +7,7 @@ class RoutesTest extends TestCase {
 	 *
 	 * @return void
 	 */
-	public function testHomeRoute()
+	public function testGetToken()
 	{
 		$response = $this->call('GET', 'home');
 

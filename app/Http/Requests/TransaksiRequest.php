@@ -4,11 +4,6 @@ use Illuminate\Validation\Validator;
 
 class TransaksiRequest extends Request
 {
-    public $customAttributes = [
-        'uraian' => 'Uraian',
-        'jumlah' => 'Jumlah',
-        'status' => 'Status'
-    ];
 
     /**
      * Get the validation rules that apply to the request.
