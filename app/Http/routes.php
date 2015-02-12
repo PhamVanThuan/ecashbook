@@ -11,6 +11,9 @@
 |
 */
 
+// Bindings Service Laracahe
+App::bind('EcashBook\Services\LaraCacheInterface', 'EcashBook\Services\LaraCache');
+
 Route::get('/', 'WelcomeController@index');
 
 Route::get('home', 'HomeController@index');
