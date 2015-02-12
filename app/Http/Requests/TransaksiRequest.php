@@ -4,6 +4,14 @@ use Illuminate\Validation\Validator;
 
 class TransaksiRequest extends Request
 {
+    /**
+     * @var array
+     */
+    protected $customAttributes = [
+        'uraian' => 'Uraian',
+        'status' => 'Status',
+        'jumlah' => 'Jumlah'
+    ];
 
     /**
      * Get the validation rules that apply to the request.
@@ -19,6 +27,21 @@ class TransaksiRequest extends Request
         ];
     }
 
+    /**
+     * @param $validator
+     *
+     * @return mixed
+     */
+    public function validator($validator)
+    {
+        return $validator->make($this->all(), $this->container->call([$this, 'rules']), $this->messages(), $this->customAttributes);
+    }
+
+    /**
+     * @param Validator $validator
+     *
+     * @return array
+     */
     protected function formatErrors(Validator $validator)
     {
         $message = $validator->errors();
