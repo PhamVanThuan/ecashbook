@@ -16,7 +16,7 @@ class Kernel extends HttpKernel
         'Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse',
         'Illuminate\Session\Middleware\StartSession',
         'Illuminate\View\Middleware\ShareErrorsFromSession',
-//        'EcashBook\Http\Middleware\VerifyCsrfToken',
+        'EcashBook\Http\Middleware\VerifyCsrfToken',
     ];
 
     /**
